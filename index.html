@@ -5,18 +5,45 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Comprar — Poço Lunar</title>
   <style>
-    body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:24px;background:#0f1724;color:#eef2ff;display:flex;align-items:center;justify-content:center;min-height:100vh}
-    .card{max-width:720px;width:100%;background:#0b1220;border-radius:10px;padding:18px;box-shadow:0 8px 30px rgba(0,0,0,0.5);display:flex;gap:16px;align-items:center}
-    img.cover{width:120px;height:auto;border-radius:6px;flex-shrink:0}
-    .meta{flex:1}
-    h1{font-size:18px;margin:0 0 8px}
-    p.lead{margin:0 0 12px;color:#cbd5e1}
-    .actions{display:flex;gap:10px;align-items:center}
-    .btn{padding:10px 14px;border-radius:8px;border:0;cursor:pointer;font-weight:700;text-decoration:none}
-    .primary{background:#06b6d4;color:#032;display:inline-block}
-    .linktxt{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#cbd5e1;padding:8px;border-radius:8px;text-decoration:none}
-    .note{font-size:13px;color:#9aa4b2;margin-top:10px}
-    code{background:#071020;padding:4px;border-radius:4px;color:#9fd5e0}
+/* 1) Base responsiva */
+*{box-sizing:border-box}
+body{margin:0;padding:16px}
+
+/* 2) Card usando GRID (encaixa bem no mobile) */
+.card{
+  max-width:720px; width:100%;
+  background:#0b1220; border-radius:10px; padding:16px;
+  box-shadow:0 8px 30px rgba(0,0,0,.5);
+
+  display:grid;                 /* << antes era flex */
+  grid-template-columns: 120px 1fr;
+  gap:14px;
+}
+
+/* 3) Imagem e textos */
+img.cover{width:120px;height:auto;border-radius:6px}
+h1{font-size:clamp(18px, 2.8vw, 22px); margin:0 0 8px}
+p.lead{margin:0 0 10px; color:#cbd5e1; font-size:clamp(14px, 2.6vw, 16px)}
+
+/* 4) Botões */
+.actions{display:flex; gap:10px; flex-wrap:wrap}
+.btn{padding:10px 14px;border-radius:8px;border:0;cursor:pointer;font-weight:700;text-decoration:none}
+.primary{background:#06b6d4;color:#032}
+.linktxt{background:transparent;border:1px solid rgba(255,255,255,.08);color:#cbd5e1}
+
+/* 5) QUEBRA PARA TELAS PEQUENAS */
+@media (max-width: 520px){
+  body{padding:12px}
+  .card{
+    grid-template-columns: 1fr;  /* empilha */
+    text-align:center;
+    padding:14px;
+  }
+  img.cover{width:56%; max-width:220px; margin:0 auto 8px}
+  .actions{flex-direction:column; align-items:stretch}
+  .btn{width:100%}               /* botões ocupam a largura toda */
+}
+    
   </style>
 </head>
 <body>
