@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Comprar — Poço Lunar</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:24px;background:#0f1724;color:#eef2ff;display:flex;align-items:center;justify-content:center;min-height:100vh}
+    .card{max-width:720px;width:100%;background:#0b1220;border-radius:10px;padding:18px;box-shadow:0 8px 30px rgba(0,0,0,0.5);display:flex;gap:16px;align-items:center}
+    img.cover{width:120px;height:auto;border-radius:6px;flex-shrink:0}
+    .meta{flex:1}
+    h1{font-size:18px;margin:0 0 8px}
+    p.lead{margin:0 0 12px;color:#cbd5e1}
+    .actions{display:flex;gap:10px;align-items:center}
+    .btn{padding:10px 14px;border-radius:8px;border:0;cursor:pointer;font-weight:700;text-decoration:none}
+    .primary{background:#06b6d4;color:#032;display:inline-block}
+    .linktxt{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#cbd5e1;padding:8px;border-radius:8px;text-decoration:none}
+    .note{font-size:13px;color:#9aa4b2;margin-top:10px}
+    code{background:#071020;padding:4px;border-radius:4px;color:#9fd5e0}
+  </style>
+</head>
+<body>
+  <div class="card" role="main" aria-label="Redirecionamento para Amazon">
+    <img class="cover" src="COVER_URL" alt="Capa do livro Poço Lunar">
+    <div class="meta">
+      <h1>Poço Lunar — Redirecionando para a página na Amazon</h1>
+      <p class="lead">Você será redirecionado para a Amazon em <strong><span id="count">3</span>s</strong>. Se preferir, clique em <strong>Ir agora</strong>.</p>
+
+      <div class="actions">
+        <a id="btnNow" class="btn primary" href="https://www.amazon.com.br/dp/B0FJC9MN12">Ir agora (Amazon)</a>
+        <a id="direct" class="btn linktxt" href="https://www.amazon.com.br/dp/B0FJC9MN12" target="_blank" rel="noopener">Abrir na Amazon (nova aba)</a>
+      </div>
+
+      <div class="note">Venda e checkout por Amazon Brasil. Compra segura via HTTPS.</div>
+      <div class="note">Link direto: <code>https://www.amazon.com.br/dp/B0FJC9MN12</code></div>
+    </div>
+  </div>
+
+<script>
+  (function(){
+    var n=3;
+    var el=document.getElementById('count');
+    var timer=setInterval(function(){
+      n--;
+      el.textContent = n>0 ? n : 0;
+      if(n<=0){
+        clearInterval(timer);
+        window.location = 'https://www.amazon.com.br/dp/B0FJC9MN12';
+      }
+    },1000);
+    document.getElementById('btnNow').addEventListener('click', function(){ clearInterval(timer); });
+  })();
+</script>
+</body>
+</html>
+
